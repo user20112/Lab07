@@ -57,6 +57,7 @@
     <Compile Include="ConfigureForm.Designer.cs">
       <DependentUpon>ConfigureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Packet.cs" />
     <Compile Include="StartupForm.cs">
       <SubType>Form</SubType>
     </Compile>
