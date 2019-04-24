@@ -64,3 +64,17 @@ C:\Users\NHTI\Desktop\Lab05\Lab05\Lab4\obj\Debug\Lab4.csproj.GenerateResource.Ca
 C:\Users\NHTI\Desktop\Lab05\Lab05\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
 C:\Users\NHTI\Desktop\Lab05\Lab05\Lab4\obj\Debug\Lab4.exe
 C:\Users\NHTI\Desktop\Lab05\Lab05\Lab4\obj\Debug\Lab4.pdb
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\bin\Debug\Resources\Icon.ico
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\bin\Debug\Lab4.exe.config
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\bin\Debug\Lab4.exe
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\bin\Debug\Lab4.pdb
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.csprojResolveAssemblyReference.cache
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.InitialConfigureForm.resources
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.ConfigureForm.resources
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.StartupForm.resources
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.PortForm.resources
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.Properties.Resources.resources
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.csproj.GenerateResource.Cache
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.exe
+C:\Users\NHTI\Desktop\Lab07\Lab05\Lab05\Lab4\obj\Debug\Lab4.pdb

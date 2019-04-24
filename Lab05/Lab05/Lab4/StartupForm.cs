@@ -68,7 +68,7 @@ namespace Lab4
             this.FormClosing += OnClose;
             ThisForm = this;
             DisplayView = PortListView;
-            this.Icon=new Icon("Resources/Icon.ico");
+            this.Icon = new Icon("Resources/Icon.ico");
         }
         private void PortListViewDoubleClick(object sender, EventArgs e)
         {
@@ -152,12 +152,17 @@ namespace Lab4
             }
             SelectedPort = Ports[0].SelectedPort;
         }
+
         public class PortData
         {
             public string DisplayName;
             public string DataString = "";
             public SerialPort SelectedPort;
             public PortForm portform;
+            public string receivedMessage = "";
+            public string HexBoxstring = "";
+            public string AsciiBoxstring = "";
+            string Currentpacket = "";
             public PortData(SerialPort serialport, PortForm MainForm)
             {
                 SelectedPort = serialport;
@@ -190,23 +195,43 @@ namespace Lab4
             }
             void DataRecieved(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
             {
-                string Data = "";
-                Data += SelectedPort.ReadExisting();
-
-                for (int x = 0; x < Data.Length; x++)
+                int header = SelectedPort.ReadByte();
+                string packet = "";
+                string data = "";
+                int CRC = 0;
+                if (header == 1)
                 {
-                    DataString += (Convert.ToString(Data[x]));
+                    packet += (char)1;
+                    int x = 0;
+                    while (x < 6)
+                    {
+                        packet += (char)SelectedPort.ReadByte();
+                        x++;
+                    }
+                    data = packet.Substring(0, packet.Length - 1);
+                    else
+                    {
+                        SelectedPort.Write("" + (char)BitConverter.GetBytes(21)[0]);
+                    }
+
                 }
-
-
-                portform.Invoke(new MethodInvoker(delegate
+                else
                 {
-                    PortForm.UpdateBoxes(SelectedPort.PortName, DataString, portform);
-                }));
-                return;
+                    if (header == 5)//on enquire
+                    {
+                        SelectedPort.Write("" + (char)BitConverter.GetBytes(6)[0]);
+                    }
+                    else
+                    {
+                        SelectedPort.Write("" + (char)BitConverter.GetBytes(21)[0]);
+                        for (int x = 1; x <= 6; x++)//read the whole packet out of the buffer
+                            SelectedPort.ReadByte();
+                    }
 
+
+                }
             }
         }
-        
+
     }
 }
