@@ -11,6 +11,7 @@ namespace Lab4
 {
     public partial class StartupForm : Form
     {
+        Random random = new Random();
         public StartupForm ThisForm;
         public SerialPort SelectedPort = new SerialPort();//public so it can be edited from ConfigureForm.
         public List<PortData> Ports = new List<PortData>();
@@ -43,6 +44,21 @@ namespace Lab4
                 }
             }
         }
+        public string GetFreeName()
+        {
+            string name = "";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            name+=chars[random.Next(chars.Length)];
+            for (int y = 0; y < PortListView.Items.Count; y++)
+            {
+                if (name == PortListView.Items[y].SubItems[1].Text)
+                {
+                    name = "";
+                    name+=GetFreeName();
+                }
+            }
+            return name;
+        }
         public PortData FindPort(string name)
         {
             foreach (PortData port in Ports)
@@ -69,6 +85,13 @@ namespace Lab4
             ThisForm = this;
             DisplayView = PortListView;
             this.Icon = new Icon("Resources/Icon.ico");
+        }
+        public void Broadcast(string data)
+        {
+            foreach (PortData port in Ports)
+            {
+                port.SelectedPort.Write(data);
+            }
         }
         private void PortListViewDoubleClick(object sender, EventArgs e)
         {
@@ -209,23 +232,24 @@ namespace Lab4
                         x++;
                     }
                     data = packet.Substring(0, packet.Length - 1);
-                    else
-                    {
-                        SelectedPort.Write("" + (char)BitConverter.GetBytes(21)[0]);
-                    }
-
                 }
                 else
                 {
                     if (header == 5)//on enquire
                     {
-                        SelectedPort.Write("" + (char)BitConverter.GetBytes(6)[0]);
+                        SelectedPort.Write("" + portform.MainForm.GetFreeName()[0]);
                     }
-                    else
+                    else//unknown header meaning its a name
                     {
-                        SelectedPort.Write("" + (char)BitConverter.GetBytes(21)[0]);
-                        for (int x = 1; x <= 6; x++)//read the whole packet out of the buffer
-                            SelectedPort.ReadByte();
+                        if (header == 7)//on List From server
+                        {
+                            int size= SelectedPort.ReadByte();
+                            while (size >0)
+                            {
+                                DisplayName += (char)SelectedPort.ReadByte();
+                                size--;
+                            }
+                        }
                     }
 
 
