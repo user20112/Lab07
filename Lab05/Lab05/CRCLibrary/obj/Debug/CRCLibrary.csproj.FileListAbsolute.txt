@@ -1,0 +1,18 @@
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\bin\Debug\CRCLibrary.dll
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\bin\Debug\CRCLibrary.pdb
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\obj\Debug\CRCLibrary.csprojResolveAssemblyReference.cache
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\obj\Debug\CRCLibrary.csproj.CoreCompileInputs.cache
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\obj\Debug\CRCLibrary.dll
+C:\Users\NHTI\Downloads\Lab03\CRCLibrary\obj\Debug\CRCLibrary.pdb
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\bin\Debug\CRCLibrary.dll
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\bin\Debug\CRCLibrary.pdb
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\obj\Debug\CRCLibrary.csprojResolveAssemblyReference.cache
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\obj\Debug\CRCLibrary.csproj.CoreCompileInputs.cache
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\obj\Debug\CRCLibrary.dll
+C:\Users\NHTI\Documents\Visual Studio 2017\Projects\CRCLibrary\obj\Debug\CRCLibrary.pdb
+D:\devlin\Lab05\CRCLibrary\bin\Debug\CRCLibrary.dll
+D:\devlin\Lab05\CRCLibrary\bin\Debug\CRCLibrary.pdb
+D:\devlin\Lab05\CRCLibrary\obj\Debug\CRCLibrary.csprojResolveAssemblyReference.cache
+D:\devlin\Lab05\CRCLibrary\obj\Debug\CRCLibrary.csproj.CoreCompileInputs.cache
+D:\devlin\Lab05\CRCLibrary\obj\Debug\CRCLibrary.dll
+D:\devlin\Lab05\CRCLibrary\obj\Debug\CRCLibrary.pdb
