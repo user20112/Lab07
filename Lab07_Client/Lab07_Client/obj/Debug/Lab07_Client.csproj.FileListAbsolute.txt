@@ -1,0 +1,11 @@
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\bin\Debug\Lab07_Client.exe.config
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\bin\Debug\Lab07_Client.exe
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\bin\Debug\Lab07_Client.pdb
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.csprojAssemblyReference.cache
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.Configure.resources
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.SerialChat.resources
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.Properties.Resources.resources
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.csproj.GenerateResource.cache
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.csproj.CoreCompileInputs.cache
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.exe
+C:\Users\Clay\Documents\GitHub\Lab07\Lab07_Client\Lab07_Client\obj\Debug\Lab07_Client.pdb
