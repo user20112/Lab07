@@ -19,7 +19,6 @@ namespace Lab4
         public PortForm(StartupForm.PortData selectedport, StartupForm mainForm)
         {
             InitializeComponent();
-            RenameBox.Text = selectedport.DisplayName;
             MainForm = mainForm;
             SelectedPort = selectedport;
             SelectedPort.OpenPort();
@@ -55,6 +54,7 @@ namespace Lab4
                     break;
                 }
             }
+            PortForm.UpdateBoxes("", "PortOpened", this);
         }
         public void OnClose(Object sender, FormClosingEventArgs e)
         {
@@ -82,6 +82,7 @@ namespace Lab4
                     break;
                 }
             }
+            PortForm.UpdateBoxes("", "PortClosed", this);
         }
 
         private void ConfigurePortButton_Click(object sender, EventArgs e)
@@ -92,10 +93,10 @@ namespace Lab4
         }
         static public void UpdateBoxes(string portname, string Datastring, PortForm portform)
         {
-            TextBox HexBox = (TextBox)portform.Controls.Find(portname + "HexBox", true)[0];
-            TextBox AsciiBox = (TextBox)portform.Controls.Find(portname + "AsciiBox", true)[0];//clear the output and output first byte.
-            HexBox.Text = BitConverter.ToString(new byte[] { Convert.ToByte(Datastring[0]) }) + " ";
-            AsciiBox.Text = Datastring[0] + " ";
+            TextBox HexBox = (TextBox)portform.Controls.Find("HexBox", true)[0];
+            TextBox AsciiBox = (TextBox)portform.Controls.Find("AsciiBox", true)[0];//clear the output and output first byte.
+            HexBox.Text += BitConverter.ToString(new byte[] { Convert.ToByte(Datastring[0]) }) + " ";
+            AsciiBox.Text += Datastring[0] + " ";
             for (int y = 1; y < Datastring.Length; y++)//oyutput rest of bytes.
             {
                 AsciiBox.Text += Datastring[y] + " ";
@@ -104,12 +105,7 @@ namespace Lab4
             AsciiBox.Text += Environment.NewLine;
             HexBox.Text += Environment.NewLine;//remember the endls
         }
-        private void RenameButton_Click(object sender, EventArgs e)
-        {
-            SelectedPort.DisplayName = RenameBox.Text;
-            SyncPort();
-        }
-        
+
         private void SyncPort()
         {
             MainForm.PassingPort = SelectedPort;

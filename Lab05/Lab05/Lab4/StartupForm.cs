@@ -44,17 +44,20 @@ namespace Lab4
                 }
             }
         }
-        public string GetFreeName()
+        public char GetFreeName()
         {
-            string name = "";
+            char name = 'A';
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            name+=chars[random.Next(chars.Length)];
+            name = chars[random.Next(chars.Length)];
             for (int y = 0; y < PortListView.Items.Count; y++)
             {
-                if (name == PortListView.Items[y].SubItems[1].Text)
+                for (int x = 0; x < PortListView.Items[y].Text.Length; x++)
                 {
-                    name = "";
-                    name+=GetFreeName();
+                    if (name == PortListView.Items[y].SubItems[1].Text[x])
+                    {
+                        name = GetFreeName();
+                    }
+
                 }
             }
             return name;
@@ -127,19 +130,7 @@ namespace Lab4
 
                                 InitialConfigureForm InitialConfigureForm = new InitialConfigureForm(this, port);
                                 InitialConfigureForm.ShowDialog();
-                                /*
-                                if (port.SelectedPort.IsOpen)
-                                {
-
-                                    MessageBox.Show("access denied, Is something else using it ? Port: " + port.DisplayName);
-                                }
-                                else
-                                {
-                                    PortForm NewPortForm = new PortForm(port, this);
-                                    OpenForms.Add(NewPortForm);
-                                    NewPortForm.Show();
-                                }
-                                */
+                                break;
                             }
                         }
                     }
@@ -169,7 +160,7 @@ namespace Lab4
             foreach (string port in ports)
             {
                 PortData Port = new PortData(new SerialPort(port, 9600, System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One), null);
-                PortListView.Items.Add(new ListViewItem(new String[3] { port, port, "Closed" }));
+                PortListView.Items.Add(new ListViewItem(new String[3] { "", port, "Closed" }));
                 Ports.Add(Port);
                 x++;
             }
@@ -185,12 +176,11 @@ namespace Lab4
             public string receivedMessage = "";
             public string HexBoxstring = "";
             public string AsciiBoxstring = "";
-            string Currentpacket = "";
             public PortData(SerialPort serialport, PortForm MainForm)
             {
                 SelectedPort = serialport;
                 portform = MainForm;
-                DisplayName = serialport.PortName;
+                DisplayName = "";
             }
             public void ClosePort()
             {
@@ -220,34 +210,73 @@ namespace Lab4
             {
                 int header = SelectedPort.ReadByte();
                 string packet = "";
-                string data = "";
-                int CRC = 0;
+                char Destination = 'a';
+                int Size = 0;
                 if (header == 1)
                 {
                     packet += (char)1;
-                    int x = 0;
-                    while (x < 6)
+                    Destination = (char)SelectedPort.ReadByte();
+                    packet += Destination;
+                    packet += (char)SelectedPort.ReadByte();
+                    Size += SelectedPort.ReadByte();
+                    packet += (char)Size;
+                    while (Size > 0)
                     {
                         packet += (char)SelectedPort.ReadByte();
-                        x++;
+                        Size--;
                     }
-                    data = packet.Substring(0, packet.Length - 1);
+                    packet+= SelectedPort.ReadByte();
+                    foreach (PortData port in portform.MainForm.Ports)
+                    {
+                        for (int x=0;x<port.DisplayName.Length;x++)
+                        {
+                            if (Destination==port.DisplayName[x])
+                            {
+                                port.SelectedPort.Write(packet);
+                                PortForm.UpdateBoxes(DisplayName, packet, portform);
+                            }
+                        }
+                    }
                 }
                 else
                 {
                     if (header == 5)//on enquire
                     {
-                        SelectedPort.Write("" + portform.MainForm.GetFreeName()[0]);
+                        char NewHost = portform.MainForm.GetFreeName();
+                        SelectedPort.Write("" +NewHost );
+                        DisplayName += NewHost;
+                        PortForm.UpdateBoxes(DisplayName, "Assigned"+NewHost, portform);
                     }
-                    else//unknown header meaning its a name
+                    else
                     {
                         if (header == 7)//on List From server
                         {
-                            int size= SelectedPort.ReadByte();
-                            while (size >0)
+                            int size = SelectedPort.ReadByte();
+                            DisplayName = "" + (char)SelectedPort.ReadByte();
+                            size--;
+                            while (size > 0)
                             {
                                 DisplayName += (char)SelectedPort.ReadByte();
                                 size--;
+                            }
+                            PortForm.UpdateBoxes(DisplayName, "Rewrote table" + DisplayName, portform);
+                        }
+                        else
+                        {
+                            if (header == 2)//Request List
+                            {
+                                int Length = 0;
+                                string List = "";
+                                foreach (PortData port in portform.MainForm.Ports)
+                                {
+                                    if(port.DisplayName!=DisplayName)
+                                    {
+                                        Length += port.DisplayName.Length;
+                                        List += port.DisplayName;
+                                    }
+                                }
+                                SelectedPort.Write((char)7 + (char)Length + List);
+                                PortForm.UpdateBoxes(DisplayName, "Sent table" + List, portform);
                             }
                         }
                     }

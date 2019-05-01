@@ -38,8 +38,6 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.AsciiLabel = new System.Windows.Forms.Label();
             this.HexLabel = new System.Windows.Forms.Label();
-            this.RenameButton = new System.Windows.Forms.Button();
-            this.RenameBox = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,31 +131,12 @@
             this.HexLabel.TabIndex = 10;
             this.HexLabel.Text = "Temp";
             // 
-            // RenameButton
-            // 
-            this.RenameButton.Location = new System.Drawing.Point(121, 27);
-            this.RenameButton.Name = "RenameButton";
-            this.RenameButton.Size = new System.Drawing.Size(75, 23);
-            this.RenameButton.TabIndex = 11;
-            this.RenameButton.Text = "Rename";
-            this.RenameButton.UseVisualStyleBackColor = true;
-            this.RenameButton.Click += new System.EventHandler(this.RenameButton_Click);
-            // 
-            // RenameBox
-            // 
-            this.RenameBox.Location = new System.Drawing.Point(15, 29);
-            this.RenameBox.Name = "RenameBox";
-            this.RenameBox.Size = new System.Drawing.Size(100, 20);
-            this.RenameBox.TabIndex = 12;
-            // 
             // PortForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(346, 450);
-            this.Controls.Add(this.RenameBox);
-            this.Controls.Add(this.RenameButton);
             this.Controls.Add(this.HexLabel);
             this.Controls.Add(this.AsciiLabel);
             this.Controls.Add(this.ClearButton);
@@ -183,8 +162,6 @@
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label AsciiLabel;
         private System.Windows.Forms.Label HexLabel;
-        private System.Windows.Forms.Button RenameButton;
-        private System.Windows.Forms.TextBox RenameBox;
         private System.Windows.Forms.ToolStripButton ConfigurePortButton;
     }
 }
